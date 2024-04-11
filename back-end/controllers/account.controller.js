@@ -3,7 +3,7 @@ import Account from "../models/account.model.js";
 export const litsAccount = async (req, res) => {
   try {
     const data = await Account.find({});
-    console.log(data);
+    res.status(200).json(data);
   } catch (err) {
     res.status(500).json({ error: err });
   }
