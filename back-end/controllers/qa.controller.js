@@ -3,6 +3,8 @@ import QA from "../models/Q&A.model.js";
 
 export const createQuestion = async (req, res) => {
   try {
+    console.log("Create Question")
+
     console.log(req.body);
 
     // Check if all required fields are present

@@ -11,6 +11,8 @@ export const listTopic = async (req, res) => {
 };
 export const createTopic = async (req, res) => {
   try {
+    console.log("Create Topic")
+
     console.log(req.body);
 
     // Check if all required fields are present

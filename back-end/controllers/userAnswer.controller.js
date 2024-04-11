@@ -11,6 +11,8 @@ export const listUserAnswer = async (req, res) => {
 };
 export const saveUserAnswer = async (req, res) => {
   try {
+    console.log("Save User Answer");
+
     console.log(req.body);
 
     // Check if all required fields are present

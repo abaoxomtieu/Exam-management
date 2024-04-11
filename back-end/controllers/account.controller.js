@@ -10,6 +10,7 @@ export const litsAccount = async (req, res) => {
 };
 export const createAccount = async (req, res) => {
   try {
+    console.log("Create Account")
     console.log(req.body);
 
     // Check if userName is not an empty string
