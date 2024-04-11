@@ -1,18 +1,31 @@
-import Account from "../models/account.model.js";
+import Topic from "../models/topic.model.js";
 
-export const litsAccount = async (req, res) => {
+export const listTopic = async (req, res) => {
   try {
-    const data = await Account.find({});
+    const data = await Topic.find({});
     console.log(data);
+    res.status(200).json(data);
   } catch (err) {
     res.status(500).json({ error: err });
   }
 };
-export const createAccount = async (req, res) => {
-  console.log(req.body);
-  const account = new Account(req.body);
-  await account.save();
-  res.status(200).json({
-    message: `Successfully created ${req.body.id}`,
-  });
+export const createTopic = async (req, res) => {
+  try {
+    console.log(req.body);
+
+    // Check if all required fields are present
+    if (!req.body.topicId || !req.body.topicName) {
+      return res
+        .status(400)
+        .json({ error: "Missing required fields in topic" });
+    }
+
+    const topic = new Topic(req.body);
+    await topic.save();
+    res.status(200).json({
+      message: `Success`,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };

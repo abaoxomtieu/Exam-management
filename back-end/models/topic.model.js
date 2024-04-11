@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const topicSchema = new mongoose.Schema({
-  topicId: String,
+  topicId: Number,
   topicName: String,
 });
 

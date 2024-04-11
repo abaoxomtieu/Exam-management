@@ -9,10 +9,20 @@ export const litsAccount = async (req, res) => {
   }
 };
 export const createAccount = async (req, res) => {
-  console.log(req.body);
-  const account = new Account(req.body);
-  await account.save();
-  res.status(200).json({
-    message: `Successfully created ${req.body.id}`,
-  });
+  try {
+    console.log(req.body);
+
+    // Check if userName is not an empty string
+    if (!req.body.userId) {
+      return res.status(400).json({ error: "userId cannot be empty" });
+    }
+
+    const account = new Account(req.body);
+    await account.save();
+    res.status(200).json({
+      message: `Success`,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
