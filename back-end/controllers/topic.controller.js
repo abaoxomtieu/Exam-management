@@ -31,3 +31,10 @@ export const createTopic = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+export const topicDetail = async (req, res) => {
+  const {id} = req.params;
+  console.log(id)
+  const data = await Topic.findOne({ topicId: id})
+  res.status(200).json(data)
+}
