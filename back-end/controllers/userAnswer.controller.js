@@ -1,6 +1,6 @@
 import userAnswer from "../models/userQA.model.js";
 
-export const listUserAnswer = async (req, res) => {
+export const listUserAnswerAll = async (req, res) => {
   try {
     const data = await userAnswer.find({});
     console.log(data);
@@ -13,8 +13,26 @@ export const listUserAnswerDetail = async (req, res) => {
   const userId = req.params.userId;
   const topicId = req.params.topicId;
   console.log(userId, topicId);
-  try { 
+  try {
     const data = await userAnswer.findOne({ userId, topicId });
+
+    if (data) {
+      console.log(data);
+      res.status(200).json(data);
+    } else {
+      res
+        .status(404)
+        .json({ message: "No document found for this user and topic" });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};
+export const listUserAnswer = async (req, res) => {
+  const userId = req.params.userId;
+  console.log(userId);
+  try {
+    const data = await userAnswer.find({ userId });
 
     if (data) {
       console.log(data);
