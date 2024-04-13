@@ -14,7 +14,7 @@ export const listUserAnswerDetail = async (req, res) => {
   const topicId = req.params.topicId;
   console.log(userId, topicId);
   try {
-    const data = await userAnswer.findOne({ userId, topicId });
+    const data = await userAnswer.findOne({ _id: topicId });
 
     if (data) {
       console.log(data);
